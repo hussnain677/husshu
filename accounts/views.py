@@ -150,7 +150,6 @@ def dashboard(request):
         if len(product_all)>0:
             alls = Product.objects.filter(user=request.user)
         else:
-            alls = Product.objects.get(user=request.user)
             messages.info(request, ' You have no product add Products and Start Selling.') 
         
     return render(request, 'registration/dashboard.html', {'data':data, 'alls':alls})
