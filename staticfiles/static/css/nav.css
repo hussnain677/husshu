@@ -1,0 +1,264 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+.main-banner container  a:hover{
+	color: white;
+}
+.newsearch{
+	display: none;
+}
+header{
+   position: relative;
+   padding: 10px;
+   background: rgb(243, 241, 241);
+   box-sizing: border-box;
+   border-radius: 4px;
+   margin: 0;
+   box-shadow: 0 2px 5px rbga(0,0,0,.2);
+}
+
+header .logo{
+	color: #01a185;
+	height: 60px;
+	line-height: 60px;
+		margin: 0;
+		padding: 0 10px;
+	text-align: center;
+	box-sizing: border-box;
+	float: left;
+	font-weight: 700;
+	text-decoration:  none;
+}
+header .logo a{
+	text-decoration: none;
+	font-size: 40px; 
+	color: #01a185;
+}
+nav{
+	float: right;
+}
+.clearfix{
+	clear: both;
+}
+nav ul{
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+nav ul li{
+	list-style: none;
+	margin-right: 5px;
+}
+nav ul li button{
+	background-color: transparent;
+	text-transform: uppercase;
+	color: #01a185;
+}
+nav ul li button img{
+	width: 40px; height: 40px; border: 1px solid black; border-radius: 50%; padding: 1px; margin-top: 5px; margin-right: 10px; display: inline-block;
+}
+nav ul li a{
+	display: block;
+	margin: 10px 0;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #262626;
+}
+nav ul li a.active, nav ul li a:hover{
+	background: #069370;
+	color: #fff;
+	transition: 0.5s;
+}
+nav ul li:hover a.active{
+	background:  #f3c500;
+	color: #fff;
+	transition: 0.5s;
+}
+.dropdown-menu a{
+	color: black;
+	display: block;
+	border: 0px hidden;
+}
+.dropdown-menu a:hover{
+	color: #f3c500;
+	text-decoration: underline;
+	transition: 0.5s;
+}
+.sr{ 
+	width: 100%;
+}
+
+@media screen and (max-width: 880px){
+	nav ul li.search{
+		display: none;
+	}
+	.newsearch{
+		display: block;
+		position: relative;
+		background-color: rgb(240, 204, 46);
+		height: 40px;
+		border-radius: 0px;
+		padding: 10px;
+		margin-top: 0px;
+		margin-right: 0px;
+		}
+	.search-bt{
+		width: 20px;
+		height: 20px;
+		margin-left: 35%;
+		border: none;
+		font-size: 16px;
+		border-radius: 50%;
+		background-color: rgb(240, 204, 46);
+		}
+	.search-tx{
+		border: none;
+		background: none;
+		outline: none;
+		color: white;
+		font-size: 16px; 
+		padding: 0;
+		margin-left: 5px;
+	}
+	.search-bo:hover .search-tx{
+		width: 80%;
+	}
+	.search-bo:hover .search-bt{
+		color: white;
+		margin-left: 0;
+	}
+	.search-bo:hover input::placeholder{
+		color: white;
+	}
+}
+
+@media screen and (max-width: 800px){
+	nav ul li.search{
+		display: none;
+	}
+	nav ul{
+		display: none;
+	}
+	
+	.ads-grid .sr{
+		display: none;
+	}
+	header .logo a{
+		margin: 0;
+		font-size: 40px;
+	}
+	.menu-toggles:before{
+		content: '\f0c9';
+		font-family: fontAwesome;
+		font-size: 30px;
+		margin: 10px;
+		float: right;
+	}
+	.menu-toggles.active:before{
+		content: '\f00d';
+	}
+	nav.active{
+		display: block;
+		width: 100%;
+	}
+	nav.active ul{
+		display: block;
+	}
+	header .logo{
+		margin: 0;
+		padding: 0;
+	}
+	.signin input.btn{
+		margin-top: 10px;
+	}
+
+@media (max-width: 500px){
+	body{
+		padding: 0px;
+		margin: 0px;
+	}
+	header{
+		width: 100%;
+		margin-right: -50px;
+	}
+	.menu-toggles:before{
+		content: '\f0c9';
+		font-family: fontAwesome;
+		font-size: 30px;
+		margin-top: -50px;
+		float: right;
+	}
+	header .logo{
+		margin: 0;
+		padding: 0;
+	}
+	header .logo a{
+		float: left;
+		margin: 0;
+		display: flex;
+		font-size: 40px;
+		padding: 0;
+	}
+}
+@media (max-width: 370px){
+	.search-bt{
+		font-size: 14px;
+	}
+	.search-tx{
+		font-size: 14px; 
+	}
+}
+
+@media (max-width: 325px){
+	.search-bt{
+		font-size: 12px;
+	}
+	.search-tx{
+		font-size: 12px; 
+	}
+	header .logo{
+		margin: 0;
+		padding: 0;
+	}
+	.menu-toggles:before{
+		content: '\f0c9';
+		font-family: fontAwesome;
+		font-size: 30px;
+		margin-top: -50px;
+		float: right;
+	}
+	header .logo a{
+		float: left;
+		margin: 0;
+		display: flex;
+		font-size: 40px;
+		padding: 0;
+	}
+}
+@media (max-width: 320px){
+	.search-bt{
+		font-size: 12px;
+	}
+	.search-tx{
+		font-size: 12px; 
+	}
+	header .logo{
+		margin: 0;
+		padding: 0;
+	}
+	.menu-toggles:before{
+		content: '\f0c9';
+		font-family: fontAwesome;
+		font-size: 30px;
+		margin-top: 5px;
+		float: right;
+	}
+	header .logo a{
+		float: left;
+		margin: 0;
+		display: flex;
+		font-size: 40px;
+		padding: 0;
+	}
+}

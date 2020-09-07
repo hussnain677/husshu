@@ -1,0 +1,22 @@
+img.fa{
+    width: 100px; height:100px; border: 0px hidden; background-color: rgb(82, 190, 218); border-radius: 50%;
+    padding: 20px;
+}
+.af:hover .fa{
+    background-color: white;
+}
+.ee .aa{
+    color: #ebc105; font-weight: bold; padding: 10px;
+}
+.search{
+    background-color: transparent;
+}
+input.input{
+    border-radius: 0px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+input.input::placeholder{
+    color: #01a185;
+}
+

@@ -1,0 +1,37 @@
+{% extends 'base2.html' %}
+
+{% load bootstrap4 %}
+{% block body %}
+
+{% load static %}
+
+{% load crispy_forms_tags %} 
+
+
+<div id="page-wrapper" class="sign-in-wrapper">
+    <div class="graphs">
+        <div class="sign-up">
+            <h1>Change Profile Data</h1>
+            <form method="POST" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                 <h2>Login Information</h2>
+            
+                    {% bootstrap_form user_form %}
+                    {% bootstrap_form profile_form %}
+                
+                <div class="clearfix"> </div>
+            
+            <div class="sub_home">
+                <div class="sub_home_left">
+                        <input type="submit" value="Save">   
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+
+{% load static %}
+
+{% load crispy_forms_tags %} 
+{% url 'categoryview' as categoryview %}
+
+
+
+
+
+
+
+
+
+
+<div class="content">
+    <div class="categories">
+        <div class="container">
+            {% for i in category|slice:"0:6"%}
+            <div class="col-md-2 col-xs-12 focus-grid">
+                <a class="af" href="{% url 'products:product_list_category' i.slug %}">
+                    <div class="focus-border"">
+                        <div class="focus-layout" style="padding: 10px;">
+                            <div class="focus-image">{% if i.image %}
+                                <img  src="{{i.image.url}}" class="fa"/>
+                                {% endif %}
+                              <h4 class="clrchg">{{i.category_name}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                      </a>
+                    </div>
+                    {% endfor %}
+                    {% for i in category|slice:"6:12"%}
+                    <div class="col-md-2 focus-grid">
+                        <a class="af" href="{% url 'products:product_list_category' i.slug %}">
+                            <div class="focus-border"">
+                                <div class="focus-layout" style="padding: 10px;">
+                                    <div class="focus-image">{% if i.image %}
+                                        <img src="{{i.image.url}}" class="fa"/>
+                                        {% endif %}
+                                      <h4 class="clrchg text-center" >{{i.category_name}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                              </a>
+                            </div>
+                    {% endfor %}
+                    
+                </div>
+            
+        
+            <div class="clearfix"></div>
+        </div>
+
+    <div class="trending-ads">
+        <div class="container">
+        <!-- slider -->
+        <div class="trend-ads">
+            <h2>Trending Ads</h2>
+                
+            <div id="demos" style="color: black;" class="carousel slide my-3" data-ride="carousel">
+                
+                <!--Slideshow starts here -->
+                <div class="container carousel-inner">
+            
+                  <div class="carousel-item active">
+   
+                    {% for i in productlist|slice:"0:"%}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class=" biseller-column" style="height: 400px;" >
+                        <a href="{% url 'products:product_detail' i.slug %}">
+                            {% if i.image %}
+                            <img src="{{i.image.url}}" style="height: 200px; width: auto;"/>
+                            {% endif %}
+                            <span class="price">&#36; {{i.price}}</span>
+                        </a> 
+                        <div class="ad-info" style="margin-top: 30px;">
+                            <h5>{{i.product_name}}</h5>
+                            <span>{{i.created}}</span>
+                    </div>
+                </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                  </div><div class="carousel-item">
+                    {% endif %}
+            
+                    {% endfor %}
+                </div>
+            
+            
+            
+            </div>
+            
+            <a class="carousel-control-prev" href="#demos" style=" margin-left: -100px;" data-slide="prev">
+                <span class="carousel-control-prev-icon" style="border: 1px hidden; padding: 5px; height: 70px; width: 30px; background-color: rgb(15, 14, 14);"></span>
+            </a>
+            <a class="carousel-control-next" href="#demos" style=" margin-right: -100px;" data-slide="next">
+                <span class="carousel-control-next-icon" style="border: 1px hidden; padding: 5px; height: 70px; width: 30px; background-color: rgb(15, 14, 14);"></span>
+            </a>
+            </div>
+            
+           
+        </div>
+        </div>      
+    </div> 
+
+
+
+
+    <div class="mobile-app">
+        <div class="container">
+            <div class="col-md-5 app-left">
+                <a href="mobileapp.html"><img src="{% static 'images/apps.png' %}"></a>
+            </div>
+            <div class="col-md-7 app-right">
+                <h3>HusShu App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
+                 <p>you can use it on your mobile phones like Android or Apple. You can install it from Google Play Store or Apple Store and seeling and buying products easily</p>
+                <div class="app-buttons">
+                    <div class="app-button">
+                        <a href="#"><img src="{% static 'images/1.png' %}"></a>
+                    </div>
+                    <div class="app-button">
+                        <a href="#"><img src="{% static 'images/2.png' %}"></a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+<div class='ado'>
+    <h3>HusShu App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
+    <p>you can use it on your mobile phones like Android or Apple. You can install it from Google Play Store or Apple Store and seeling and buying products easily</p>
+    <div class="app-buttona">
+        <div class="app-buttonas">
+            <a href="#"><img src="{% static 'images/1.png' %}"></a>
+        </div>
+        <div class="app-buttonas">
+            <a href="#"><img src="{% static 'images/2.png' %}"></a>
+        </div>
+            <div class="clearfix"> </div>
+        </div>
+</div>
+
+
+
+
+
+</div>
+    <!-- //slider -->				
+ 
+
+
+    
+
+
+
+{% endblock body %}

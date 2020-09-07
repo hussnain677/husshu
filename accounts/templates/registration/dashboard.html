@@ -1,0 +1,136 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block body %}
+<body style="padding: 0; margin: 0;">
+<div class="block res" style="margin-bottom: 0px;">
+<a class="fgh" href="/accounts/edit">
+<div class='img'>
+    
+            {% if data.image %}
+                <img class="imgg" src="{{ data.image.url }}" style="">
+            {% else %}
+            
+<h1>Nothing</h1>
+{% endif %}
+<div class="overlay fad">
+    <div class="text" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        Change Profile Picture
+    </div>
+</div>
+
+</div>
+</a>
+<div class="profile">
+<h1 class="h1" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{ data.user.first_name }} {{ data.user.last_name }}</h1>
+</div>
+<ul>
+<li class='edit'>
+    <h3 class="h3" >Username*: <span>{{data.user}}</span></h1>
+    <h3 class="h3" >Date of Birth*: <span class="dob">{{data.dob}}</span></h1>
+</li>
+<li class='editb'>
+    <h3 class="h3" >Email*: <span class="email">{{data.user.email}}</span></h1>
+    <h3 class="h3" >Phone Number*: <span class="dob">{{data.number}}</span></h1>
+</li>
+</ul>
+<div class="link">
+    <h3><a class="b" href="/accounts/edit">Edit Profile</a></h3>
+</div>
+</div>
+
+<div class="product">
+    <h1>Your Product<span style="font-size: 20px; color: rgb(121, 121, 121);"> ({{alls.count}})</span></h1>
+   
+    <a class="btto" href="/add_product"> <button class="am" >Add Product<i class="glyphicon glyphicon-plus"></i></button></a>
+    
+    <table class="table">
+        {% if messages %}
+								{% for message in messages %}
+								
+								<div class="alert alert-danger text-center" style="font-size: 14px;" role="alert">
+                                {{message}}
+                                </div>
+                                {% endfor %}
+								{% endif %}
+        {% for i in alls %}
+
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th class="sell">Seller Name</th>
+                <th>Product Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                
+                {% if i.image %}
+                <td><img src="{{ i.image.url }}"></td>
+                {% endif %}
+                <td class="namee">{{i.product_name}}</td>
+                <td class="sela">{{i.user.first_name}} {{i.user.last_name}}</td>
+                <td class="butt">
+                    <button class="btn btn-success"><a class="bttt" href="{% url 'products:product_detail' i.slug %}"><i class="fa fa-eye"></i> view</a></button>
+                    <button class="btn btn-danger" ><a href="{% url 'delete_product' %}?pid={{i.id}}" style="text-decoration: none; color: white"><i class="fa fa-trash"></i> Delete</a></button>
+                
+                </td>
+                <td><hr></td>
+            </tr>
+        
+
+
+
+<div class="modal fade" id="{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+							aria-hidden="true">
+								<div class="modal-dialog modal-lg " style=" width: 400px">
+									<div class="modal-content">
+										<div class="modal-header">
+											
+											<h4 class="modal-title" id="myModalLabel">
+												Product Detail</h4>
+                                        </div>
+                                    
+                                        <div class=" biseller-column" style="height: auto;" >
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;</button>
+                                            <a href="{% url 'products:product_detail' i.slug %}" class='text-center'>
+                                                {% if i.image %}
+                                                <img class="cimg" src="{{i.image.url}}" style="height: 200px; width: auto;"/>
+                                                {% endif %}
+                                                <span class="price">&#36; {{i.price}}</span>
+                                            </a> 
+                                            <div class="ad-info" style="margin-top: 30px;">
+                                                <h5>{{i.product_name}}</h5>
+                                                <span>{{i.created}}</span>
+                                        </div>
+                                    </div>
+                                        
+                                    
+                                
+                                        {% endfor %}
+									</div>
+								</div>
+							</div>
+						<script>
+						$('#myModal').modal('');
+						</script>
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+<hr style="clear: both;">
+</body>
+
+{% endblock %}

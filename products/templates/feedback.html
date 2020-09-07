@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+{% block body %}
+
+{% load static %}
+
+{% load crispy_forms_tags %} 
+
+
+
+<div class="feedback main-grid-border">
+    <div class="container">
+        <h2 class="head">Feedback</h2>
+        <div class="feed-back">
+            <h3>Tell us what you think of us</h3>
+            <p>Send your feedback so that we improve our site and provide more and more good products to you.</p>
+            {% if msg %}
+            <div class="alert alert-success" role="alert">
+                 {{ msgs }} <strong>{{fname}}-{{lname}}</strong>
+               </div>
+            {% endif %}
+            <div class="feed-back-form">
+                <form method="POST" action="/feedback/send">
+                    {% csrf_token %}
+                <span>User Details</span>
+                        <input type="text" name="fname" placeholder="First Name" required/>
+                        <input type="text" name="lname" required placeholder='Last Name'>
+                        <input type="text" name="email" required placeholder="Your Email" >
+                        <input type="text" name="number" required placeholder="Your Phone Number">
+                        <span>Is there anything you would like to tell us?</span>
+                        <textarea type="text" name="msg" required placeholder="Type your suggestion..."></textarea>
+                        <input type="submit" value="submit">
+                    </form>
+            </div>
+        </div>
+    </div>	
+</div>
+
+<script>
+    $('.alert').alert()
+</script>
+
+
+
+{% endblock body %}

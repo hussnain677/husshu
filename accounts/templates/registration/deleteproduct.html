@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<section>
+    <div id="page-wrapper" class="sign-in-wrapper">
+        <div class="graphs">
+            <div class="sign-in-form text-center">
+                    <h1>Are you sure want to delete your Product?</h1>
+                    {% if product.image %}
+                <img src="{{ product.image.url }}" >
+            {% endif %}
+                <h4>{{product.product_name}}</h4>
+                <div class="mt-4">
+                    <a href="{% url 'delete_product' %}?pid={{product.id}}&&action=confirm" style="margin-right: 10px;" class="btn btn-danger">Confirm Delete</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-warning">Cancel</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--footer section start-->
+{% endblock body %}
+<!--footer section end-->
+</section>

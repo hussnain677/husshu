@@ -1,0 +1,95 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<!--single-page-->
+	<div class="single-page main-grid-border">
+		<div class="container">
+			<ol class="breadcrumb" style="margin-bottom: 5px;">
+				<li><a href="/">Home</a></li>
+				<li><a href="{% url 'products:product_list' %}">All Ads</a></li>
+				{% if product_detail %}
+				<li class="active">{{product_detail.product_name}}</li>
+				{% endif %}
+			</ol>
+			<div class="product-desc">
+				<div class="col-md-7 product-view">
+					<div class="flexslider">
+						<ul class="slides">
+							{% for image in product_images %}
+								<li data-thumb="{{image.image.url}}">
+									<img src="{{image.image.url}}" />
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<p> <i class="glyphicon glyphicon-map-marker"></i> <a href="#">{{product_detail.city}}</a>, <a href="#">{{product_detail.country}}</a>| Added at {{product_detail.created}}, Ad ID: {{product_detail.slug}}</p>
+					<hr>
+					<!-- FlexSlider -->
+					  <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+					<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+
+						<script>
+					// Can also be used with $(document).ready()
+					$(window).load(function() {
+					  $('.flexslider').flexslider({
+						animation: "slide",
+						controlNav: "thumbnails"
+					  });
+					});
+					</script>
+					<!-- //FlexSlider -->
+					<div class="product-details">
+						<h4>Views : <strong>{{ count}}</strong></h4><hr>
+						<p><strong>Description</strong> : {{product_detail.description}}</p><hr>
+					
+					</div>
+				</div>
+				<div class="col-md-5 product-details-grid">
+					<div class="item-price">
+						<div class="product-price text-center" >
+							<h2>{{product_detail.product_name}}</h3>
+							<div class="clearfix"></div>
+						</div>
+						<div class="product-price" style="display: block;">
+							<p class="p-price" >Price</p>
+							<h4 style="color: #01a185;;">${{product_detail.price}}</h3>
+							<div class="clearfix"></div>
+						</div>
+						<div class="condition">
+							<p class="p-price">Brand</p>
+							<h4>{{product_detail.brand}}</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="condition">
+							<p class="p-price">Condition</p>
+							<h4>{{product_detail.condition}}</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="itemtype">
+							<p class="p-price">Category</p>
+							<h4>{{product_detail.category}}</h4>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="interested text-center">
+						<h4>Interested in this Prodeuct?<small> Contact the Seller!</small></h4>
+						<p><i class="glyphicon glyphicon-user"></i>{{product_detail.user.first_name}} {{product_detail.user.last_name}}</p>
+						<p><i class="glyphicon glyphicon-earphone"></i>{{product_detail.number}}</p>
+						<p><i class="glyphicon glyphicon-envelope"></i>{{product_detail.user.email}}</p>
+					</div>
+						
+					
+				</div>
+			<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+		
+	<!--//single-page-->
+
+{% endblock body %}

@@ -1,0 +1,146 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+{% block body %}
+
+{% load static %}
+
+{% load crispy_forms_tags %} 
+
+
+
+
+
+
+
+    
+
+
+<div class="contact main-grid-border">
+    <div class="container">
+        <h2 class="head text-center">Contact Us</h2>
+        
+        <h3 class="text-center">{{ msgs }} <span style="color: #8f0606;">{{ name }} </span> </h3>
+        <section id="hire">    
+            <form id="filldetails" method="POST" action="/contact/send">
+                {% csrf_token %}
+                  <div class="field name-box">
+                        <input type="text" id="name" name="name" placeholder="Who Are You?" required/>
+                        <label for="name">Name</label>
+                        <span class="ss-icon">check</span>
+                  </div>
+                  
+                  <div class="field email-box">
+                        <input type="text" id="email" name="email" placeholder="example@email.com" required/>
+                        <label for="email">Email</label>
+                        <span class="ss-icon">check</span>
+                  </div>
+                  
+                  
+                  <div class="field phonenum-box">
+                        <input type="text" name="number" id="email" placeholder="Phone Number" required/>
+                        <label for="email">Phone</label>
+                        <span class="ss-icon">check</span>
+                  </div>
+
+                  <div class="field msg-box">
+                        <textarea id="msg" name="msg" rows="4" placeholder="Your message goes here..." required/></textarea>
+                        <label for="msg">Your Msg</label>
+                        <span class="ss-icon">check</span>
+                  </div>
+
+                 
+         
+                <div class="upload">
+                <div class="clear"></div>
+                <input class="button new_people" type="submit" value="Send" />
+                </form>
+    
+    <!-- JavaScript Includes -->
+    <script src="{% static 'js/jquery.knob.js' %}"></script>
+
+    <!-- jQuery File Upload Dependencies -->
+    <script src="{% static 'js/jquery.ui.widget.js' %}"></script>
+    <script src="{% static 'js/jquery.fileupload.js' %}"></script>
+    
+    <!-- Our main JS file -->
+    <script src="{% static 'js/script.js' %}"></script>
+                    </div>
+        </section>
+        <script>
+              $('textarea').blur(function () {
+            $('#hire textarea').each(function () {
+                $this = $(this);
+                if (this.value != '') {
+                    $this.addClass('focused');
+                    $('textarea + label + span').css({ 'opacity': 1 });
+                } else {
+                    $this.removeClass('focused');
+                    $('textarea + label + span').css({ 'opacity': 0 });
+                }
+            });
+        });
+        $('#hire .field:first-child input').blur(function () {
+            $('#hire .field:first-child input').each(function () {
+                $this = $(this);
+                if (this.value != '') {
+                    $this.addClass('focused');
+                    $('.field:first-child input + label + span').css({ 'opacity': 1 });
+                } else {
+                    $this.removeClass('focused');
+                    $('.field:first-child input + label + span').css({ 'opacity': 0 });
+                }
+            });
+        });
+        $('#hire .field:nth-child(2) input').blur(function () {
+            $('#hire .field:nth-child(2) input').each(function () {
+                $this = $(this);
+                if (this.value != '') {
+                    $this.addClass('focused');
+                    $('.field:nth-child(2) input + label + span').css({ 'opacity': 1 });
+                } else {
+                    $this.removeClass('focused');
+                    $('.field:nth-child(2) input + label + span').css({ 'opacity': 0 });
+                }
+            });
+        });
+        $('#hire .field:nth-child(3) input').blur(function () {
+            $('#hire .field:nth-child(3) input').each(function () {
+                $this = $(this);
+                if (this.value != '') {
+                    $this.addClass('focused');
+                    $('.field:nth-child(3) input + label + span').css({ 'opacity': 1 });
+                } else {
+                    $this.removeClass('focused');
+                    $('.field:nth-child(3) input + label + span').css({ 'opacity': 0 });
+                }
+            });
+        });
+        $('#hire .field:nth-child(4) input').blur(function () {
+            $('#hire .field:nth-child(4) input').each(function () {
+                $this = $(this);
+                if (this.value != '') {
+                    $this.addClass('focused');
+                    $('.field:nth-child(4) input + label + span').css({ 'opacity': 1 });
+                } else {
+                    $this.removeClass('focused');
+                    $('.field:nth-child(4) input + label + span').css({ 'opacity': 0 });
+                }
+            });
+        });
+      //@ sourceURL=pen.js
+    </script>    
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+    </div>	
+</div>
+
+
+
+
+
+
+
+{% endblock body %}
